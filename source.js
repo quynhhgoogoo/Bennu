@@ -6,10 +6,10 @@
 
  function startGame() {
      myGameArea.start();
-     myGamePiece = new component(50, 53, "img/flappy.png", 300, 300, "image");
+     myGamePiece = new component(50, 53, "img/bennu_ship.png", 300, 300, "image");
      //myObstacle = new component(310, 360, "pipe.png", 300, 120, "image");
      myBackground = new component(1200, 580, "img/background.png", 0, 0, "image");
-     myScore = new component("30px", "Consolas", "black", 280, 40, "text");
+     myScore = new component("30px", "Consolas", "white", 280, 40, "text");
      mySound = new sound("sound/laugh.mp3");
      myMusic = new sound("sound/bounce.mp3");
      myMusic.play();
@@ -34,7 +34,7 @@
      },
      clear: function() {
          this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-     }
+     },
  }
 
  function component(width, height, color, x, y, type) {
@@ -49,7 +49,7 @@
      this.height = height;
      this.speedX = 0;
      this.speedY = 0;
-     this.gravity = 0.001;
+     this.gravity = 1;
      this.gravitySpeed = 0;
      this.x = x;
      this.y = y;
@@ -70,17 +70,19 @@
          }
      }
      this.newPos = function() {
-         this.gravitySpeed += this.gravity;
+         this.gravitySpeed = this.gravity;
          this.x += this.speedX;
          this.y += this.speedY + this.gravitySpeed;
          this.hitBottom();
      }
      this.hitBottom = function() {
          var rockbottom = myGameArea.canvas.height - this.height;
-         if (this.y > rockbottom) {
+         if (this.y > rockbottom || this.y < 0) {
              this.y = rockbottom;
          }
+
      }
+
      this.crashWith = function(otherobj) {
          var myleft = this.x;
          var myright = this.x + (this.width);
@@ -91,7 +93,7 @@
          var othertop = otherobj.y;
          var otherbottom = otherobj.y + (otherobj.height);
          var crash = true;
-         if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
+         if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright) || (mytop < othertop)) {
              crash = false;
          }
          return crash;
@@ -114,13 +116,13 @@
      myBackground.newPos();
      myBackground.update();
      myGameArea.frameNo += 1;
-     if (myGameArea.frameNo == 1 || everyinterval(300)) {
+     if (myGameArea.frameNo == 1 || everyinterval(250)) {
          x = myGameArea.canvas.width;
-         minHeight = 55;
+         minHeight = 50;
          maxHeight = 138;
          height = Math.floor(Math.random() * (maxHeight - minHeight + 1) + minHeight);
-         minGap = 90;
-         maxGap = 150;
+         minGap = 110;
+         maxGap = 250;
          gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
          myObstacles.push(new component(150, height, "img/pipereverse.png", x, 0, "image"));
          myObstacles.push(new component(150, x - height - gap, "img/pipe.png", x, height + gap, "image"));
@@ -141,7 +143,7 @@
  }
 
  function clearmove() {
-     myGamePiece.image.src = "img/flappy.png";
+     myGamePiece.image.src = "img/bennu_ship.png";
      myGamePiece.image.src = "img/pipe.png"
      myGamePiece.speedX = 0;
      myGamePiece.speedY = 0;
