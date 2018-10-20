@@ -1,9 +1,11 @@
  var myGamePiece; //initialize object
  var myObstacles = []; //initialize obstacles
- var myBackground = [];
+var images=["img/flappy.png","img/meteors.png","img/background.png"];
  var myScore; //initialize score
  var mySound;
  var myMusic;
+ var nextObstacle=1;
+var imageIndex=0;
 
  function startGame() {
      myGameArea.start();
@@ -82,8 +84,11 @@
      }
      this.hitBottom = function() {
          var rockbottom = myGameArea.canvas.height - this.height;
-         if (this.y > rockbottom || this.y < 0) {
+         if (this.y > rockbottom) {
              this.y = rockbottom;
+         }
+         if (this.y < 0) {
+             this.y = 0;
          }
 
      }
@@ -121,7 +126,11 @@
      myBackground.newPos();
      myBackground.update();
      myGameArea.frameNo += 1;
-     if (myGameArea.frameNo == 1 || everyinterval(250)) {
+     if (myGameArea.frameNo == nextObstacle) {
+         minInt = 230;
+         maxInt = 350;
+         Int = Math.floor(Math.random() * (maxInt - minInt + 1) + minInt);
+        nextObstacle+=Int;
          x = myGameArea.canvas.width;
          minHeight = 50;
          maxHeight = 138;
@@ -129,8 +138,14 @@
          minGap = 110;
          maxGap = 250;
          gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
-         myObstacles.push(new component(150, 320, "img/meteors.png", x, 0, "image"));
-         myObstacles.push(new component(150, x - height - gap, "img/meteors.png", x, height + gap, "image"));
+         minY = 0;
+         maxY = 380;
+         y = Math.floor(Math.random() * (maxY - minY + 1) + minY);
+         myObstacles.push(new component(200, 200, "img/meteors.png", x, y, "image"));
+         //myObstacles.push(new component(150, x - height - gap, "img/meteors.png", x, height + gap, "image"));
+     }
+     if (myGameArea.frameNo > 0 && everyinterval(300)) {
+        change();
      }
      if (myGameArea.frameNo > 0 && everyinterval(400)) {
          changeBackground();
@@ -167,7 +182,11 @@
  function refreshPage() {
      window.location.reload();
  }
-
- function changeBackground() {
-     myBackground = new component(1200, 580, "img/flappy.png", 0, 0, "image");
+function change(){
+    imageIndex++;
+    if(imageIndex>=images.length){
+        imageIndex=0;
+    }
+    var imgUrl=images[imageIndex];
+    myBackground=new component(1200, 580, imgUrl, 0, 0, "image");
  }
