@@ -35,6 +35,10 @@
      clear: function() {
          this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
      },
+     stop: function() {
+         console.log('stop() called.');
+     },
+
  }
 
  function component(width, height, color, x, y, type) {
