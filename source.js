@@ -1,5 +1,6 @@
  var myGamePiece; //initialize object
  var myObstacles = []; //initialize obstacles
+ var myBackground = [];
  var myScore; //initialize score
  var mySound;
  var myMusic;
@@ -128,8 +129,11 @@
          minGap = 110;
          maxGap = 250;
          gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
-         myObstacles.push(new component(320, 320, "img/meteors.png", x, 0, "image"));
-         //myObstacles.push(new component(150, x - height - gap, "img/pipe.png", x, height + gap, "image"));
+         myObstacles.push(new component(150, 320, "img/meteors.png", x, 0, "image"));
+         myObstacles.push(new component(150, x - height - gap, "img/meteors.png", x, height + gap, "image"));
+     }
+     if (myGameArea.frameNo > 0 && everyinterval(400)) {
+         changeBackground();
      }
      myGamePiece.speedX = 0;
      myGamePiece.speedY = 0;
@@ -148,7 +152,7 @@
 
  function clearmove() {
      myGamePiece.image.src = "img/bennu_ship.png";
-     myGamePiece.image.src = "img/pipe.png"
+     myGamePiece.image.src = "img/meteors.png"
      myGamePiece.speedX = 0;
      myGamePiece.speedY = 0;
  }
@@ -162,4 +166,8 @@
 
  function refreshPage() {
      window.location.reload();
+ }
+
+ function changeBackground() {
+     myBackground = new component(1200, 580, "img/flappy.png", 0, 0, "image");
  }
