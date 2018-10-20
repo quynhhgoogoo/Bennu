@@ -1,6 +1,17 @@
  var myGamePiece; //initialize object
  var myObstacles = []; //initialize obstacles
-var images=["img/flappy.png","img/meteors.png","img/background.png"];
+var images=[
+ "jupiter.jpg",
+ "sumu1.jpg",
+ "sumu2.jpg",
+ "sumu3.jpg",
+ "sumu4.jpg",
+ "sumu5.jpg",
+ "sumu6.jpg",
+ "sumu7.jpg",
+ "sumu8.jpg",
+ "sumu.jpg",
+];
  var myScore; //initialize score
  var mySound;
  var myMusic;
@@ -188,5 +199,5 @@ function change(){
         imageIndex=0;
     }
     var imgUrl=images[imageIndex];
-    myBackground=new component(1200, 580, imgUrl, 0, 0, "image");
+    myBackground=new component(1200, 580, 'img/'+imgUrl, 0, 0, "image");
  }
