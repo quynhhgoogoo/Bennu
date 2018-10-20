@@ -128,7 +128,7 @@
          minGap = 110;
          maxGap = 250;
          gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
-         myObstacles.push(new component(320, 320, "img/meteor.png", x, 0, "image"));
+         myObstacles.push(new component(320, 320, "img/meteors.png", x, 0, "image"));
          //myObstacles.push(new component(150, x - height - gap, "img/pipe.png", x, height + gap, "image"));
      }
      myGamePiece.speedX = 0;
