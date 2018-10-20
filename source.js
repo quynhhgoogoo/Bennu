@@ -6,8 +6,7 @@
 
  function startGame() {
      myGameArea.start();
-     myGamePiece = new component(50, 53, "img/bennu_ship.png", 300, 300, "image");
-     myGamePiece = new component(67, 50, "img/bennu_ship.png", 300, 300, "image");
+     myGamePiece = new component(64, 48, "img/ship.png", 300, 300, "image");
      //myObstacle = new component(310, 360, "pipe.png", 300, 120, "image");
      myBackground = new component(1200, 580, "img/background.png", 0, 0, "image");
      myScore = new component("30px", "Consolas", "white", 280, 40, "text");
