@@ -10,9 +10,9 @@
      //myObstacle = new component(310, 360, "pipe.png", 300, 120, "image");
      myBackground = new component(1200, 580, "img/background.png", 0, 0, "image");
      myScore = new component("30px", "Consolas", "white", 280, 40, "text");
-     mySound = new sound("sound/laugh.mp3");
-     myMusic = new sound("sound/bounce.mp3");
-     myMusic.play();
+     //mySound = new sound("sound/laugh.mp3");
+     //myMusic = new sound("sound/bounce.mp3");
+     //myMusic.play();
      myGameArea.start();
  }
  var myGameArea = {
@@ -111,7 +111,7 @@
      for (i = 0; i < myObstacles.length; i += 1) {
          if (myGamePiece.crashWith(myObstacles[i])) {
              document.getElementById("playAgain").style.display = "block";
-             mySound.play();
+             //mySound.play();
              myGameArea.stop();
              return;
          }
@@ -128,8 +128,8 @@
          minGap = 110;
          maxGap = 250;
          gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
-         myObstacles.push(new component(150, height, "img/pipereverse.png", x, 0, "image"));
-         myObstacles.push(new component(150, x - height - gap, "img/pipe.png", x, height + gap, "image"));
+         myObstacles.push(new component(320, 320, "img/meteor.png", x, 0, "image"));
+         //myObstacles.push(new component(150, x - height - gap, "img/pipe.png", x, height + gap, "image"));
      }
      myGamePiece.speedX = 0;
      myGamePiece.speedY = 0;
