@@ -147,9 +147,9 @@ var imageIndex=0;
      if (myGameArea.frameNo > 0 && everyinterval(300)) {
         change();
      }
-     if (myGameArea.frameNo > 0 && everyinterval(400)) {
+     /*if (myGameArea.frameNo > 0 && everyinterval(400)) {
          changeBackground();
-     }
+     }*/
      myGamePiece.speedX = 0;
      myGamePiece.speedY = 0;
      if (myGameArea.keys && myGameArea.keys[32]) {
