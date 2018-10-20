@@ -7,9 +7,15 @@ $(function(){
       });
 
 });
-function nextImage(){
+function imageUrls(){
   if(feed){
-    test=feed;
+    var urls=[];
+    var items=$(feed).find('item');
+    items.each(function(){
+      var item=$(this);
+      urls.push(item.find('enclosure').attr('url'));
+    });
+
   }
   else{
     console.log("no feed.");
