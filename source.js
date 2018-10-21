@@ -1,6 +1,6 @@
  var myGamePiece; //initialize object
  var myObstacles = []; //initialize obstacles
-var images=["img/earth.png","img/sumu4.jpg","img/jupiter.jpg","img/saturn.jpg","img/uranus.jpg","img/Neptune.jpg","img/sun.jpg","img/sumu1.jpg","img/sumu2.jpg","img/sumu3.jpg","img/sumu5.jpg","img/sumu6.jpg"];
+var images=["img/earth.png","img/sumu4.jpg","img/jupiter.jpg","img/Saturn.jpg","img/uranus.jpg","img/Neptune.jpg","img/Sun.jpg","img/sumu1.jpg","img/sumu2.jpg","img/sumu3.jpg","img/sumu5.jpg","img/sumu6.jpg"];
 var texts=["Earth", "Sumu4", "Jupiter","Saturn","Uranus","Neptune","Sun","Sumu1","Sumu2","Sumu3","Sumu5","Sumu6"];
  var myScore; //initialize score
  var mySound;
