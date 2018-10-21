@@ -97,6 +97,16 @@ var imageIndex=0;
      }
 
      this.crashWith = function(otherobj) {
+      var crashingDistance = (this.height + otherobj.height) * 0.5;
+      var shipCenterX = this.x + (this.width / 2);
+      var shipCenterY = this.y + (this.height / 2);
+      var rockCenterX = otherobj.x + (otherobj.width / 2);
+      var rockCenterY = otherobj.y + (otherobj.height / 2);
+      var distanceX = shipCenterX - rockCenterX;
+      var distanceY = shipCenterY - rockCenterY;
+      var distance = Math.sqrt(distanceX*distanceX+distanceY*distanceY);
+      return (distance < crashingDistance);
+      
          var myleft = this.x;
          var myright = this.x + (this.width);
          var mytop = this.y;
@@ -144,7 +154,7 @@ var imageIndex=0;
          minY = 0;
          maxY = 380;
          y = Math.floor(Math.random() * (maxY - minY + 1) + minY);
-         myObstacles.push(new component(200, 200, "img/bennu.png", x, y, "image"));
+         myObstacles.push(new component(300, 300, "img/bennu.png", x, y, "image"));
          //myObstacles.push(new component(150, x - height - gap, "img/meteors.png", x, height + gap, "image"));
      }
      if (myGameArea.frameNo > 0 && everyinterval(500)) {
