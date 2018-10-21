@@ -188,7 +188,7 @@
          myObstacles[i].update();
      }
      myText.update();
-     myScore.text = "SCORE: " + myGameArea.frameNo;
+     myScore.text = "DISTANCE: " + myGameArea.frameNo;
      myScore.update();
      myGamePiece.newPos();
      myGamePiece.update();
