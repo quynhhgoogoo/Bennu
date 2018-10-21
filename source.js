@@ -70,6 +70,12 @@ var imageIndex=0;
                  this.x,
                  this.y,
                  this.width, this.height);
+
+         } else if (type == "rock") {
+           ctx.save();
+           ctx.rotate(45*Math.PI/180);
+           ctx.drawImage(this.image,this.x,this.y,this.width, this.height);
+           ctx.restore();
          } else if (this.type == "text") {
              ctx.font = this.width + " " + this.height;
              ctx.fillStyle = color;
@@ -154,7 +160,7 @@ var imageIndex=0;
          minY = 0;
          maxY = 380;
          y = Math.floor(Math.random() * (maxY - minY + 1) + minY);
-         myObstacles.push(new component(200, 200, "img/bennu.png", x, y, "image"));
+         myObstacles.push(new component(200, 200, "img/bennu.png", x, y, "rock"));
          //myObstacles.push(new component(150, x - height - gap, "img/meteors.png", x, height + gap, "image"));
      }
      if (myGameArea.frameNo > 0 && everyinterval(500)) {
