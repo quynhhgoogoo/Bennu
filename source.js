@@ -143,7 +143,7 @@
      for (i = 0; i < myObstacles.length; i += 1) {
          if (myGamePiece.crashWith(myObstacles[i])) {
              document.getElementById("playAgain").style.display = "block";
-             //mySound.play();
+             mySound.play();
              myGameArea.stop();
              x
              return;
