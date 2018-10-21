@@ -1,18 +1,7 @@
  var myGamePiece; //initialize object
  var myObstacles = []; //initialize obstacles
-var images=[
- "jupiter.jpg",
- "sumu1.jpg",
- "sumu2.jpg",
- "sumu3.jpg",
- "sumu4.jpg",
- "sumu5.jpg",
- "sumu6.jpg",
- "sumu7.jpg",
- "sumu8.jpg",
- "sumu.jpg",
-];
-var texts=["jupiter", "sumu1", "sumu2", "sumu2", "sumu3", "sumu4", "sumu5", "sumu6", "sumu7", "sumu8", "sumu"];
+var images=["img/background.png","img/meteors.png","img/flappy.png"];
+var texts=["a", "b", "c"];
  var myScore; //initialize score
  var mySound;
  var myMusic;
@@ -23,7 +12,7 @@ var imageIndex=0;
      myGameArea.start();
      myGamePiece = new component(64, 44, "img/ship.png", 300, 300, "image");
      //myObstacle = new component(310, 360, "pipe.png", 300, 120, "image");
-     myBackground = new component(1200, 580, "img/jupiter.png", 0, 0, "image");
+     myBackground = new component(1200, 580, "img/background.png", 0, 0, "image");
      myScore = new component("30px", "Consolas", "white", 280, 40, "text");
      myText = new component("30px", "Consolas", "white", 100, 100, "text");
      myText.text = texts[0];
@@ -132,7 +121,7 @@ var imageIndex=0;
          if (myGamePiece.crashWith(myObstacles[i])) {
              document.getElementById("playAgain").style.display = "block";
              //mySound.play();
-             myGameArea.stop();
+             myGameArea.stop();x
              return;
          }
      }
@@ -142,7 +131,7 @@ var imageIndex=0;
      myGameArea.frameNo += 1;
      if (myGameArea.frameNo == nextObstacle) {
          minInt = 230;
-         maxInt = 350;
+         maxInt =350;
          Int = Math.floor(Math.random() * (maxInt - minInt + 1) + minInt);
         nextObstacle+=Int;
          x = myGameArea.canvas.width;
@@ -158,8 +147,9 @@ var imageIndex=0;
          myObstacles.push(new component(200, 200, "img/meteors.png", x, y, "image"));
          //myObstacles.push(new component(150, x - height - gap, "img/meteors.png", x, height + gap, "image"));
      }
-     if (myGameArea.frameNo > 0 && everyinterval(300)) {
+     if (myGameArea.frameNo > 0 && everyinterval(500)) {
         change();
+
      }
      /*if (myGameArea.frameNo > 0 && everyinterval(400)) {
          changeBackground();
