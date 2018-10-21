@@ -1,12 +1,12 @@
  var myGamePiece; //initialize object
  var myObstacles = []; //initialize obstacles
-<<<<<<< HEAD
+
  var images = ["img/earth.png", "img/sumu4.jpg", "img/jupiter.jpg", "img/saturn.jpg", "img/uranus.jpg", "img/Neptune.jpg", "img/sun.jpg", "img/sumu1.jpg", "img/sumu2.jpg", "img/sumu3.jpg", "img/sumu5.jpg", "img/sumu6.jpg"];
  var texts = ["Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Sun", "Mercury", "Venus", "Starry Sumu", "Milky Way", "Galaxy"];
-=======
-var images=["img/earth.png","img/sumu4.jpg","img/jupiter.jpg","img/Saturn.jpg","img/uranus.jpg","img/Neptune.jpg","img/Sun.jpg","img/sumu1.jpg","img/sumu2.jpg","img/sumu3.jpg","img/sumu5.jpg","img/sumu6.jpg"];
-var texts=["Earth", "Sumu4", "Jupiter","Saturn","Uranus","Neptune","Sun","Sumu1","Sumu2","Sumu3","Sumu5","Sumu6"];
->>>>>>> 485d94cea74ea8ea90e6435283c7ba00e99e3c57
+
+ var images = ["img/earth.png", "img/sumu4.jpg", "img/jupiter.jpg", "img/Saturn.jpg", "img/uranus.jpg", "img/Neptune.jpg", "img/Sun.jpg", "img/sumu1.jpg", "img/sumu2.jpg", "img/sumu3.jpg", "img/sumu5.jpg", "img/sumu6.jpg"];
+ var texts = ["Earth", "Sumu4", "Jupiter", "Saturn", "Uranus", "Neptune", "Sun", "Sumu1", "Sumu2", "Sumu3", "Sumu5", "Sumu6"];
+
  var myScore; //initialize score
 
  var mySound;
