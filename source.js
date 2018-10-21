@@ -12,6 +12,7 @@ var images=[
  "sumu8.jpg",
  "sumu.jpg",
 ];
+var texts=["jupiter", "sumu1", "sumu2", "sumu2", "sumu3", "sumu4", "sumu5", "sumu6", "sumu7", "sumu8", "sumu"];
  var myScore; //initialize score
  var mySound;
  var myMusic;
@@ -66,8 +67,8 @@ var imageIndex=0;
      this.width = width;
      this.height = height;
      this.speedX = 0;
-     this.speedY = 0;
-     this.gravity = 1;
+     this.speedY = 2;
+     this.gravity = 5;
      this.gravitySpeed = 0;
      this.x = x;
      this.y = y;
@@ -164,12 +165,13 @@ var imageIndex=0;
      myGamePiece.speedX = 0;
      myGamePiece.speedY = 0;
      if (myGameArea.keys && myGameArea.keys[32]) {
-         myGamePiece.speedY = -5;
+         myGamePiece.speedY = -10;
      }
      for (i = 0; i < myObstacles.length; i += 1) {
          myObstacles[i].x += -1;
          myObstacles[i].update();
      }
+     myText.update();
      myScore.text = "SCORE: " + myGameArea.frameNo;
      myScore.update();
      myGamePiece.newPos();
@@ -198,6 +200,11 @@ function change(){
     if(imageIndex>=images.length){
         imageIndex=0;
     }
+
     var imgUrl=images[imageIndex];
-    myBackground=new component(1200, 580, 'img/'+imgUrl, 0, 0, "image");
+    var textUrl = texts[imageIndex];
+    myBackground.image.src = imgUrl;
+    myText.text = textUrl;
+    // myText=new component("30px", "Consolas", "white", 0, 0, textUrl, "text");
+    // myBackground=new component(1200, 580, imgUrl, 0, 0, "image");
  }
