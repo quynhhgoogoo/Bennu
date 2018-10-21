@@ -70,6 +70,12 @@ var imageIndex=0;
                  this.x,
                  this.y,
                  this.width, this.height);
+
+         } else if (type == "rock") {
+           ctx.save();
+           ctx.rotate(45*Math.PI/180);
+           ctx.drawImage(this.image,this.x,this.y,this.width, this.height);
+           ctx.restore();
          } else if (this.type == "text") {
              ctx.font = this.width + " " + this.height;
              ctx.fillStyle = color;
