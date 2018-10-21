@@ -1,12 +1,14 @@
  var myGamePiece; //initialize object
  var myObstacles = []; //initialize obstacles
-var images=["img/earth.png","img/sumu4.jpg","img/jupiter.jpg","img/saturn.jpg","img/uranus.jpg","img/Neptune.jpg","img/sun.jpg","img/sumu1.jpg","img/sumu2.jpg","img/sumu3.jpg","img/sumu5.jpg","img/sumu6.jpg"];
-var texts=["Earth", "Sumu4", "Jupiter","Saturn","Uranus","Neptune","Sun","Sumu1","Sumu2","Sumu3","Sumu5","Sumu6"];
+ var images = ["img/earth.png", "img/sumu4.jpg", "img/jupiter.jpg", "img/saturn.jpg", "img/uranus.jpg", "img/Neptune.jpg", "img/sun.jpg", "img/sumu1.jpg", "img/sumu2.jpg", "img/sumu3.jpg", "img/sumu5.jpg", "img/sumu6.jpg"];
+ var texts = ["Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Sun", "Mercury", "Venus", "Starry Sumu", "Milky Way", "Galaxy"];
  var myScore; //initialize score
+
  var mySound;
  var myMusic;
- var nextObstacle=1;
-var imageIndex=0;
+
+ var nextObstacle = 1;
+ var imageIndex = 0;
 
  function startGame() {
      myGameArea.start();
@@ -15,10 +17,12 @@ var imageIndex=0;
      myBackground = new component(1200, 580, "img/background.png", 0, 0, "image");
      myScore = new component("30px", "Consolas", "white", 280, 40, "text");
      myText = new component("30px", "Consolas", "white", 100, 100, "text");
-     myText.text = texts[0];
-     //mySound = new sound("sound/laugh.mp3");
-     //myMusic = new sound("sound/bounce.mp3");
-     //myMusic.play();
+     myText.text = "Welcome to " + texts[0];
+     //myStatus = new component("30px", "Consolas", "white", 100, 100, "text");
+
+     mySound = new sound("sound/boom.mp3");
+     myMusic = new sound("sound/flightsound.mp3");
+     myMusic.play();
      myGameArea.start();
  }
  var myGameArea = {
@@ -72,10 +76,10 @@ var imageIndex=0;
                  this.width, this.height);
 
          } else if (type == "rock") {
-           ctx.save();
-           ctx.rotate(45*Math.PI/180);
-           ctx.drawImage(this.image,this.x,this.y,this.width, this.height);
-           ctx.restore();
+             ctx.save();
+             ctx.rotate(45 * Math.PI / 180);
+             ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+             ctx.restore();
          } else if (this.type == "text") {
              ctx.font = this.width + " " + this.height;
              ctx.fillStyle = color;
@@ -103,16 +107,16 @@ var imageIndex=0;
      }
 
      this.crashWith = function(otherobj) {
-      var crashingDistance = (this.height + otherobj.height) * 0.5;
-      var shipCenterX = this.x + (this.width / 2);
-      var shipCenterY = this.y + (this.height / 2);
-      var rockCenterX = otherobj.x + (otherobj.width / 2);
-      var rockCenterY = otherobj.y + (otherobj.height / 2);
-      var distanceX = shipCenterX - rockCenterX;
-      var distanceY = shipCenterY - rockCenterY;
-      var distance = Math.sqrt(distanceX*distanceX+distanceY*distanceY);
-      return (distance < crashingDistance);
-      
+         var crashingDistance = (this.height + otherobj.height) * 0.5;
+         var shipCenterX = this.x + (this.width / 2);
+         var shipCenterY = this.y + (this.height / 2);
+         var rockCenterX = otherobj.x + (otherobj.width / 2);
+         var rockCenterY = otherobj.y + (otherobj.height / 2);
+         var distanceX = shipCenterX - rockCenterX;
+         var distanceY = shipCenterY - rockCenterY;
+         var distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+         return (distance < crashingDistance);
+
          var myleft = this.x;
          var myright = this.x + (this.width);
          var mytop = this.y;
@@ -136,8 +140,9 @@ var imageIndex=0;
      for (i = 0; i < myObstacles.length; i += 1) {
          if (myGamePiece.crashWith(myObstacles[i])) {
              document.getElementById("playAgain").style.display = "block";
-             //mySound.play();
-             myGameArea.stop();x
+             mySound.play();
+             myGameArea.stop();
+             x
              return;
          }
      }
@@ -147,9 +152,9 @@ var imageIndex=0;
      myGameArea.frameNo += 1;
      if (myGameArea.frameNo == nextObstacle) {
          minInt = 230;
-         maxInt =350;
+         maxInt = 350;
          Int = Math.floor(Math.random() * (maxInt - minInt + 1) + minInt);
-        nextObstacle+=Int;
+         nextObstacle += Int;
          x = myGameArea.canvas.width;
          minHeight = 50;
          maxHeight = 138;
@@ -164,7 +169,7 @@ var imageIndex=0;
          //myObstacles.push(new component(150, x - height - gap, "img/meteors.png", x, height + gap, "image"));
      }
      if (myGameArea.frameNo > 0 && everyinterval(1000)) {
-        change();
+         change();
 
      }
      /*if (myGameArea.frameNo > 0 && everyinterval(400)) {
@@ -203,16 +208,17 @@ var imageIndex=0;
  function refreshPage() {
      window.location.reload();
  }
-function change(){
-    imageIndex++;
-    if(imageIndex>=images.length){
-        imageIndex=0;
-    }
 
-    var imgUrl=images[imageIndex];
-    var textUrl = texts[imageIndex];
-    myBackground.image.src = imgUrl;
-    myText.text = textUrl;
-    // myText=new component("30px", "Consolas", "white", 0, 0, textUrl, "text");
-    // myBackground=new component(1200, 580, imgUrl, 0, 0, "image");
+ function change() {
+     imageIndex++;
+     if (imageIndex >= images.length) {
+         imageIndex = 0;
+     }
+
+     var imgUrl = images[imageIndex];
+     var textUrl = texts[imageIndex];
+     myBackground.image.src = imgUrl;
+     myText.text = "Welcome to the " + textUrl;
+     // myText=new component("30px", "Consolas", "white", 0, 0, textUrl, "text");
+     // myBackground=new component(1200, 580, imgUrl, 0, 0, "image");
  }
